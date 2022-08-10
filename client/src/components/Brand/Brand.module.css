@@ -1,0 +1,9 @@
+.brand {
+    @apply mb-16;
+
+    @apply md:text-8xl;
+    @apply lg:text-6xl;
+
+    @apply text-gray-100;
+    @apply font-bold;
+}
