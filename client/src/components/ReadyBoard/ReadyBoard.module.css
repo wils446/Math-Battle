@@ -1,0 +1,73 @@
+.text {
+    @apply text-3xl;
+    @apply font-semibold;
+    @apply flex;
+    @apply justify-center;
+    @apply mb-10;
+}
+.text div {
+    @apply mx-1;
+}
+
+.text .ready {
+    @apply text-green-500;
+}
+
+.text .unready {
+    @apply text-red-500;
+}
+
+.ready-btn {
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-red-500;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply hover:bg-opacity-50;
+
+    @apply w-48;
+}
+
+.unready-btn {
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-green-500;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply hover:bg-opacity-50;
+
+    @apply w-48;
+}
+
+.start-button {
+    @apply mt-5;
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-sky-900;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply hover:bg-opacity-50;
+
+    @apply w-48;
+}
+
+.start-button-disabled {
+    @apply mt-5;
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-sky-900;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply opacity-50;
+    @apply cursor-not-allowed;
+
+    @apply w-48;
+}
