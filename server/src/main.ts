@@ -69,7 +69,6 @@ io.on("connection", (socket) => {
 
 		room.playerLeft(socket);
 		if (room.getPlayersAmount() === 0) rooms.delete(room.getRoomId());
-		console.log(rooms.size);
 	});
 
 	socket.on("disconnect", () => {
