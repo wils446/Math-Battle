@@ -64,8 +64,8 @@ class GameRoom {
 	public playerLeft(user: Socket): void {
 		this.players.delete(user.id);
 		user.leave(this.roomId);
-		this.io.to(this.roomId).emit("userLeft", user.id);
-		this.finishGame(true);
+		this.io.to(this.roomId).emit("userLeft", { players: Array.from(this.players.values()) });
+		if (this.isPlaying) this.finishGame(true);
 	}
 
 	/**
@@ -122,7 +122,15 @@ class GameRoom {
 		}
 
 		this.isPlaying = false;
-		this.io.to(this.roomId).emit("finishGame", winner);
+		this.io.to(this.roomId).emit("finishGame", { winner: this.players.get(winner) });
+	}
+
+	/**
+	 * get players
+	 * @returns {number}
+	 */
+	public getPlayersAmount(): number {
+		return Array.from(this.players.values()).length;
 	}
 
 	/**
@@ -134,16 +142,6 @@ class GameRoom {
 	}
 
 	/**
-	 * get all players final score
-	 * @returns {{id : string, score : number}[]}
-	 */
-	private getFinalScore() {
-		return Array.from(this.players.values()).map((player) => {
-			return { id: player.id, score: player.score };
-		});
-	}
-
-	/**
 	 * get all players ready
 	 * @returns {boolean}
 	 */
@@ -152,22 +150,14 @@ class GameRoom {
 	}
 
 	/**
-	 * get all players nickname
-	 * @returns {string[]}
-	 */
-	private getAllPlayersNickname(): string[] {
-		return Array.from(this.players.values()).map((player) => player.nickname);
-	}
-
-	/**
 	 * generate all question
 	 * @returns {void}
 	 */
 	private generateQuestions(): void {
 		for (let i = 0; i < 15; i++) {
-			if (i < 5) this.questions.push(this.generateQuestion(100, ["+", "-"]));
-			else if (i < 10) this.questions.push(this.generateQuestion(10, ["*", "/"]));
-			else this.questions.push(this.generateQuestion(100, ["*", "/", "+", "-"]));
+			if (i < 5) this.questions.push(this.generateQuestion(100, 100, ["+", "-"]));
+			else if (i < 10) this.questions.push(this.generateQuestion(10, 10, ["*", "/"]));
+			else this.questions.push(this.generateQuestion(100, 10, ["*", "/", "+", "-"]));
 		}
 	}
 
@@ -177,10 +167,15 @@ class GameRoom {
 	 * @param {string[]} operator
 	 * @returns {string}
 	 */
-	private generateQuestion(max: number, operator: string[]): string {
-		return `${this.randomNumber(max)} ${this.getRandomOperator(...operator)} ${this.randomNumber(
-			max
-		)}`;
+	private generateQuestion(maxOne: number, maxTwo: number, operator: string[]): string {
+		const question = `${this.randomNumber(maxOne)} ${this.getRandomOperator(
+			...operator
+		)} ${this.randomNumber(maxTwo)}`;
+		if (question.includes("/")) {
+			if (eval(question.replace("/", "%")) !== 0)
+				return this.generateQuestion(maxOne, maxTwo, ["/"]);
+		}
+		return question;
 	}
 
 	/**
