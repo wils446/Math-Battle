@@ -1,0 +1,22 @@
+.title {
+    @apply text-5xl;
+    @apply font-bold;
+}
+
+.winner-name {
+    @apply mt-4;
+    @apply text-5xl;
+    @apply font-semibold;
+    @apply underline;
+}
+
+.leave-button {
+    @apply my-10;
+    @apply bg-green-600;
+    @apply text-white;
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply px-8;
+    @apply py-2;
+    @apply rounded-lg;
+}
