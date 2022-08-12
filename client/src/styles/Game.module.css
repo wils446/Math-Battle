@@ -1,0 +1,84 @@
+.layout-container {
+    @apply mx-auto;
+    @apply lg:container;
+    @apply py-10;
+    @apply text-center;
+}
+
+.room-code {
+    @apply -mt-16;
+    @apply mb-14;
+}
+
+.room-code span {
+    @apply text-xl;
+    @apply font-semibold;
+    @apply mr-2;
+}
+
+.room-code button {
+    @apply py-0.5;
+    @apply px-1;
+    @apply bg-sky-900;
+    @apply rounded-lg;
+    @apply hover:bg-opacity-50;
+}
+
+.text {
+    @apply text-3xl;
+    @apply font-semibold;
+    @apply flex;
+    @apply justify-center;
+    @apply mb-10;
+}
+.text div {
+    @apply mx-1;
+}
+
+.text .ready {
+    @apply text-green-500;
+}
+
+.text .unready {
+    @apply text-red-500;
+}
+
+.ready-btn {
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-red-500;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply hover:bg-opacity-50;
+
+    @apply w-48;
+}
+
+.unready-btn {
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-green-500;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply hover:bg-opacity-50;
+
+    @apply w-48;
+}
+
+.start-button {
+    @apply mt-5;
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply bg-sky-900;
+    @apply text-white;
+    @apply px-7;
+    @apply py-2;
+    @apply rounded-xl;
+    @apply hover:bg-opacity-50;
+
+    @apply w-48;
+}

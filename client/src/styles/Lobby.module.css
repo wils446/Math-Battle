@@ -1,26 +1,32 @@
 .layout-container {
-    @apply lg:container;
     @apply mx-auto;
-    @apply h-screen;
+    @apply lg:container;
     @apply py-10;
     @apply text-center;
 }
 
-.content {
-    @apply mx-auto;
-    @apply align-middle;
-    @apply block;
-    @apply text-center;
+.room-code {
+    @apply -mt-16;
+    @apply mb-14;
+}
 
-    @apply w-full;
-    @apply lg:w-80;
+.room-code span {
+    @apply text-xl;
+    @apply font-semibold;
+    @apply mr-2;
+}
+
+.room-code button {
+    @apply py-0.5;
+    @apply px-1;
+    @apply bg-sky-900;
+    @apply rounded-lg;
+    @apply hover:bg-opacity-50;
 }
 
 .content h1 {
-    @apply text-center;
-
-    @apply text-4xl;
-    @apply lg:text-3xl;
+    @apply lg:text-xl;
+    @apply text-3xl;
 
     @apply font-semibold;
 }
@@ -41,7 +47,7 @@
 }
 
 .content button {
-    @apply bg-green-700;
+    @apply bg-indigo-900;
     @apply font-semibold;
     @apply my-4;
     @apply h-10;
@@ -51,18 +57,4 @@
 
     @apply rounded-xl;
     @apply hover:bg-opacity-50;
-}
-
-.button-disabled {
-    @apply bg-green-700;
-    @apply font-semibold;
-    @apply my-4;
-    @apply h-10;
-
-    @apply w-60;
-    @apply lg:w-48;
-
-    @apply rounded-xl;
-    @apply opacity-50;
-    @apply cursor-not-allowed;
 }
