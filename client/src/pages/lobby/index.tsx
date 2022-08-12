@@ -1,7 +1,8 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Brand, PageHeader } from "../../components";
+import { SocketContext } from "../../context/socket";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import styles from "../../styles/Lobby.module.css";
 
@@ -33,6 +34,10 @@ const Lobby: NextPage = () => {
     const onPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") onEnterButtonOnClick();
     };
+
+    useEffect(() => {
+        if (roomCode === "") router.push("/");
+    }, []);
 
     return (
         <div className={styles["layout-container"]}>
